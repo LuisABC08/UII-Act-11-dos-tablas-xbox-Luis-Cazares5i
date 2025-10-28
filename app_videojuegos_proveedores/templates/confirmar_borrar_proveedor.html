@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block titulo %}Eliminar Proveedor | Xbox Gaming Hub{% endblock %}
+
+{% block contenido %}
+<h2>¿Estás seguro de que quieres borrar al proveedor "{{ proveedor.nombre_proveedor }}"?</h2>
+<p>Esta acción no se puede deshacer. Los videojuegos asociados podrían quedar sin proveedor.</p>
+<form method="post">
+    {% csrf_token %}
+    <div class="actions">
+        <button type="submit" class="btn btn-danger">Sí, Borrar</button>
+        <a href="{% url 'app_videojuegos_proveedores:detalle_proveedor' proveedor.id %}" class="btn">Cancelar</a>
+    </div>
+</form>
+{% endblock %}

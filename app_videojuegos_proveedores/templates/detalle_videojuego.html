@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block titulo %}{{ videojuego.titulo }} | Xbox Gaming Hub{% endblock %}
+
+{% block contenido %}
+<article class="item-detail"> {# Cambiado a item-detail #}
+    <div class="item-banner"> {# Cambiado a item-banner #}
+        {% if videojuego.foto %}
+            <img src="{{ videojuego.foto.url }}" alt="Portada de {{ videojuego.titulo }}" class="detail-photo">
+        {% else %}
+            <div class="detail-placeholder">🎮</div>
+        {% endif %}
+        <div class="item-info"> {# Cambiado a item-info #}
+            <h1>{{ videojuego.titulo }}</h1>
+            <p><strong>Desarrollador:</strong> {{ videojuego.desarrollador }}</p>
+            <p><strong>Género:</strong> {{ videojuego.genero }}</p>
+            <p><strong>Plataforma:</strong> {{ videojuego.plataforma }}</p>
+            <p><strong>Fecha de Lanzamiento:</strong> {{ videojuego.fecha_lanzamiento|default:"N/A" }}</p>
+            {% if videojuego.proveedor %}
+                <p><strong>Proveedor:</strong> <a href="{% url 'app_videojuegos_proveedores:detalle_proveedor' videojuego.proveedor.id %}">{{ videojuego.proveedor.nombre_proveedor }}</a></p>
+            {% else %}
+                <p><strong>Proveedor:</strong> No asignado</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="detail-actions">
+        <a href="{% url 'app_videojuegos_proveedores:editar_videojuego' videojuego.id %}" class="btn btn-secondary">✏️ Editar</a>
+        <a href="{% url 'app_videojuegos_proveedores:borrar_videojuego' videojuego.id %}" class="btn btn-danger">🗑️ Borrar</a>
+    </div>
+</article>
+{% endblock %}

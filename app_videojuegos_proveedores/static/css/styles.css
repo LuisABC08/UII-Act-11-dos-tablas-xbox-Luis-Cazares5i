@@ -1,0 +1,437 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #2c5282 0%, #1a202c 100%); /* Tonos de azul más oscuros para Xbox */
+    color: #e2e8f0; /* Texto más claro */
+    line-height: 1.6;
+}
+
+.wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-header {
+    background: #1a202c; /* Fondo oscuro */
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    border-bottom: 1px solid #2d3748;
+}
+
+.main-header h1 a {
+    color: #48bb78; /* Verde Xbox */
+    text-decoration: none;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.main-nav a {
+    margin-left: 1.5rem;
+    color: #e2e8f0;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.main-nav a:hover {
+    color: #48bb78; /* Verde al pasar el ratón */
+}
+
+.main-content {
+    flex: 1;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+    color: #fff; /* Títulos en blanco */
+}
+
+.item-grid { /* Reutilizado para videojuegos y proveedores */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    list-style: none;
+}
+
+.item-card { /* Reutilizado para videojuegos y proveedores */
+    background: #2d3748; /* Fondo más oscuro */
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: transform 0.3s;
+}
+
+.item-card:hover {
+    transform: translateY(-5px);
+}
+
+.item-card a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.item-img, .item-placeholder { /* Reutilizado */
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.item-placeholder { /* Reutilizado */
+    background: #4a5568;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    color: #e2e8f0;
+}
+
+.item-card h3 {
+    padding: 1rem;
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+.item-developer, .item-contact { /* Adaptado para desarrollador/contacto */
+    color: #a0aec0;
+    font-size: 0.9rem;
+    padding: 0 1rem 1rem;
+}
+
+.item-detail { /* Reutilizado para videojuegos y proveedores */
+    background: #2d3748;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    padding: 2rem;
+    color: #e2e8f0;
+}
+
+.item-banner { /* Reutilizado */
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    align-items: center;
+    flex-wrap: wrap; /* Añadido para responsividad */
+}
+
+.detail-photo {
+    width: 180px;
+    height: 180px;
+    border-radius: 12px; /* Cuadrado para portadas */
+    object-fit: cover;
+    border: 5px solid #4a5568;
+}
+
+.detail-placeholder {
+    width: 180px;
+    height: 180px;
+    background: #4a5568;
+    border-radius: 12px; /* Cuadrado para placeholders */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    color: #e2e8f0;
+}
+
+.item-info h1 {
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+.item-info p {
+    margin-bottom: 0.3rem;
+    color: #cbd5e0;
+}
+
+.item-info a {
+    color: #48bb78; /* Verde para enlaces */
+    text-decoration: none;
+}
+
+.item-info a:hover {
+    text-decoration: underline;
+}
+
+.detail-actions {
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.related-items-section { /* Nueva sección para elementos relacionados (ej. videojuegos de un proveedor) */
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #4a5568;
+}
+
+.related-items-section h2 {
+    font-size: 1.8rem;
+    color: #fff;
+    margin-bottom: 1.5rem;
+}
+
+.item-list { /* Lista genérica para elementos relacionados */
+    list-style: none;
+}
+
+.item-list li {
+    padding: 0.8rem 1rem;
+    background: #4a5568;
+    border-left: 4px solid #48bb78; /* Verde Xbox */
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #e2e8f0;
+    border-radius: 4px;
+}
+
+.item-list li a {
+    color: #e2e8f0;
+    text-decoration: none;
+    display: block;
+}
+
+.item-list li a:hover {
+    color: #48bb78;
+}
+
+/* Estilos para formularios */
+.form-styled {
+    background: #2d3748;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    color: #e2e8f0;
+}
+
+.form-styled p {
+    margin-bottom: 1.5rem;
+}
+
+.form-styled label {
+    display: block;
+    margin-bottom: 0.6rem;
+    font-weight: 600;
+    color: #cbd5e0;
+}
+
+.form-styled input[type="text"],
+.form-styled input[type="email"],
+.form-styled input[type="date"],
+.form-styled input[type="file"],
+.form-styled select,
+.form-styled textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #4a5568;
+    border-radius: 8px;
+    background: #1a202c;
+    color: #e2e8f0;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-styled input[type="text"]:focus,
+.form-styled input[type="email"]:focus,
+.form-styled input[type="date"]:focus,
+.form-styled input[type="file"]:focus,
+.form-styled select:focus,
+.form-styled textarea:focus {
+    border-color: #48bb78;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(72, 187, 120, 0.5); /* Sombra verde */
+}
+
+/* Estilos específicos para select y date */
+.form-styled select {
+    appearance: none; /* Elimina estilos por defecto del navegador */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23CBD5E0%22%20d%3D%22M287%2C146.2L146.2%2C287L5%2C146.2L146.2%2C5L287%2C146.2z%22%2F%3E%3C%2Fsvg%3E'); /* Flecha personalizada */
+    background-repeat: no-repeat;
+    background-position: right 0.8em center;
+    background-size: 0.6em auto;
+    padding-right: 2.5em; /* Espacio para la flecha */
+}
+
+/* Ocultar flecha por defecto en algunos navegadores */
+.form-styled select::-ms-expand {
+    display: none;
+}
+
+.form-styled input[type="file"] {
+    padding: 0.5rem; /* Ajuste para input file */
+    border: 1px dashed #4a5568;
+    background: #1a202c;
+}
+
+.form-styled .helptext {
+    font-size: 0.85rem;
+    color: #a0aec0;
+    margin-top: 0.4rem;
+    display: block;
+}
+
+.form-styled ul.errorlist {
+    color: #f56565;
+    list-style: none;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    padding-left: 0;
+}
+
+.form-styled ul.errorlist li {
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+.actions {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end; /* Alinea los botones a la derecha */
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn-primary {
+    background: #48bb78; /* Verde Xbox */
+    color: white;
+}
+
+.btn-primary:hover { background: #38a169; }
+
+.btn-secondary {
+    background: #4a5568; /* Gris azulado */
+    color: white;
+}
+
+.btn-secondary:hover { background: #2d3748; }
+
+.btn-danger {
+    background: #e53e3e; /* Rojo */
+    color: white;
+}
+
+.btn-danger:hover { background: #c53030; }
+
+.main-footer {
+    text-align: center;
+    padding: 1.5rem;
+    background: #1a202c;
+    color: #a0aec0;
+    font-size: 0.9rem;
+    margin-top: auto;
+    border-top: 1px solid #2d3748;
+}
+
+/* Mensajes de vacío */
+.no-items, .empty-message {
+    background: #2d3748;
+    color: #cbd5e0;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    grid-column: 1 / -1; /* Ocupa todo el ancho en el grid */
+    font-style: italic;
+}
+
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+    .main-header {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+    .main-header h1 {
+        text-align: center;
+    }
+    .main-nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    .main-nav a {
+        margin: 0.5rem 0;
+    }
+    .main-content {
+        padding: 1rem;
+    }
+    .page-header {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+    }
+    .item-banner {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+    }
+    .detail-actions {
+        justify-content: center;
+    }
+    .form-styled {
+        padding: 1.5rem;
+    }
+    .actions {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-header h1 a {
+        font-size: 1.5rem;
+    }
+    .item-info h1 {
+        font-size: 2rem;
+    }
+    .btn {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+    .detail-actions, .actions {
+        flex-direction: column;
+    }
+    .detail-photo, .detail-placeholder {
+        width: 150px;
+        height: 150px;
+        font-size: 3rem;
+    }
+}

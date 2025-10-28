@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block titulo %}{{ proveedor.nombre_proveedor }} | Xbox Gaming Hub{% endblock %}
+
+{% block contenido %}
+<article class="item-detail">
+    <div class="item-banner">
+        <div class="detail-placeholder">🏢</div> {# Icono para el proveedor #}
+        <div class="item-info">
+            <h1>{{ proveedor.nombre_proveedor }}</h1>
+            <p><strong>Contacto:</strong> {{ proveedor.contacto_nombre|default:"N/A" }}</p>
+            <p><strong>Teléfono:</strong> {{ proveedor.contacto_telefono|default:"N/A" }}</p>
+            <p><strong>Email:</strong> {{ proveedor.contacto_email|default:"N/A" }}</p>
+            <p><strong>Dirección:</strong> {{ proveedor.direccion_proveedor|default:"N/A" }}</p>
+        </div>
+    </div>
+
+    <div class="detail-actions">
+        <a href="{% url 'app_videojuegos_proveedores:editar_proveedor' proveedor.id %}" class="btn btn-secondary">✏️ Editar</a>
+        <a href="{% url 'app_videojuegos_proveedores:borrar_proveedor' proveedor.id %}" class="btn btn-danger">🗑️ Borrar</a>
+    </div>
+
+    <section class="related-items-section"> {# Sección para videojuegos relacionados #}
+        <h2>Videojuegos de este Proveedor</h2>
+        {% if proveedor.videojuegos.all %}
+        <ul class="item-list">
+            {% for videojuego in proveedor.videojuegos.all %}
+            <li><a href="{% url 'app_videojuegos_proveedores:detalle_videojuego' videojuego.id %}">{{ videojuego.titulo }}</a></li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p class="empty-message">Este proveedor no tiene videojuegos registrados.</p>
+        {% endif %}
+    </section>
+</article>
+{% endblock %}

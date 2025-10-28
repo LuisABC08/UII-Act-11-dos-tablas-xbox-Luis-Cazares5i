@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block titulo %}Videojuegos | Xbox Gaming Hub{% endblock %}
+
+{% block contenido %}
+<div class="page-header">
+    <h2>Videojuegos Disponibles</h2>
+    <a href="{% url 'app_videojuegos_proveedores:crear_videojuego' %}" class="btn btn-primary">+ Agregar Videojuego</a>
+</div>
+
+<ul class="item-grid"> {# Cambiado a item-grid para reutilizar estilos #}
+    {% for videojuego in videojuegos %}
+    <li class="item-card"> {# Cambiado a item-card #}
+        <a href="{% url 'app_videojuegos_proveedores:detalle_videojuego' videojuego.id %}">
+            {% if videojuego.foto %}
+                <img src="{{ videojuego.foto.url }}" alt="Portada de {{ videojuego.titulo }}" class="item-img"> {# item-img #}
+            {% else %}
+                <div class="item-placeholder">🎮</div> {# item-placeholder #}
+            {% endif %}
+            <h3>{{ videojuego.titulo }}</h3>
+            <p class="item-developer">{{ videojuego.desarrollador }}</p> {# item-developer #}
+        </a>
+    </li>
+    {% empty %}
+    <li class="no-items">No hay videojuegos registrados.</li> {# no-items #}
+    {% endfor %}
+</ul>
+{% endblock %}

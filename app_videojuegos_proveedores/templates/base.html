@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %}Xbox Gaming Hub{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="wrapper">
+        <header class="main-header">
+            <h1><a href="{% url 'app_videojuegos_proveedores:listar_videojuegos' %}">🎮 Xbox Gaming Hub</a></h1>
+            <nav class="main-nav">
+                <a href="{% url 'app_videojuegos_proveedores:listar_videojuegos' %}">🕹️ Videojuegos</a>
+                <a href="{% url 'app_videojuegos_proveedores:crear_videojuego' %}">➕ Nuevo Videojuego</a>
+                <a href="{% url 'app_videojuegos_proveedores:listar_proveedores' %}">🏢 Proveedores</a>
+                <a href="{% url 'app_videojuegos_proveedores:crear_proveedor' %}">➕ Nuevo Proveedor</a>
+            </nav>
+        </header>
+
+        <main class="main-content">
+            {% block contenido %}{% endblock %}
+        </main>
+
+        <footer class="main-footer">
+            <p>© 2024 Xbox Gaming Hub - Luis Cazares 5-i</p>
+        </footer>
+    </div>
+</body>
+</html>
